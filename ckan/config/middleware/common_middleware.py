@@ -63,7 +63,10 @@ class TrackingMiddleware(object):
 
     def __init__(self, app, config):
         self.app = app
-        self.engine = sa.create_engine(config.get('sqlalchemy.url'))
+        extras = {'url': config.get('sqlalchemy.url')}
+        config.setdefault('pool_pre_ping', True)
+        self.engine = sa.engine_from_config(config, 'ckan.datastore.sqlalchemy.', **extras)
+        # self.engine = sa.create_engine(config.get('sqlalchemy.url'))
 
     def __call__(self, environ, start_response):
         path = environ['PATH_INFO']
