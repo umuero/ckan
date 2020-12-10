@@ -1902,13 +1902,16 @@ def package_search(context, data_dict):
                 package_dict = package.get(data_source)
                 ## use data in search index if there
                 if package_dict:
-                    # the package_dict still needs translating when being viewed
-                    package_dict = json.loads(package_dict)
-                    if context.get('for_view'):
-                        for item in plugins.PluginImplementations(
-                                plugins.IPackageController):
-                            package_dict = item.before_view(package_dict)
-                    results.append(package_dict)
+                    try:
+                        # the package_dict still needs translating when being viewed
+                        package_dict = json.loads(package_dict)
+                        if context.get('for_view'):
+                            for item in plugins.PluginImplementations(
+                                    plugins.IPackageController):
+                                package_dict = item.before_view(package_dict)
+                        results.append(package_dict)
+                    except Exception:
+                        log.error('Corrupt package_dict is coming from solr for package id %s', package['id'])
                 else:
                     log.error('No package_dict is coming from solr for package '
                               'id %s', package['id'])
