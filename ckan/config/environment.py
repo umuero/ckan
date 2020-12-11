@@ -135,7 +135,7 @@ def load_environment(global_conf, app_conf):
 # Note: Do not remove the following lines, they are used in the docs
 # Start CONFIG_FROM_ENV_VARS
 CONFIG_FROM_ENV_VARS = {
-    'ckan.datastore.sqlalchemy.url': 'CKAN_SQLALCHEMY_URL',
+    'sqlalchemy.url': 'CKAN_SQLALCHEMY_URL',
     'ckan.datastore.write_url': 'CKAN_DATASTORE_WRITE_URL',
     'ckan.datastore.read_url': 'CKAN_DATASTORE_READ_URL',
     'ckan.redis.url': 'CKAN_REDIS_URL',
@@ -175,7 +175,7 @@ def update_config():
         msg = 'Setting CKAN_DB as an env var is deprecated and will be' \
             ' removed in a future release. Use CKAN_SQLALCHEMY_URL instead.'
         log.warn(msg)
-        config['ckan.datastore.sqlalchemy.url'] = ckan_db
+        config['sqlalchemy.url'] = ckan_db
 
     for option in CONFIG_FROM_ENV_VARS:
         from_env = os.environ.get(CONFIG_FROM_ENV_VARS[option], None)
@@ -287,6 +287,7 @@ def update_config():
     # Enable pessimistic disconnect handling (added in SQLAlchemy 1.2)
     # to eliminate database errors due to stale pooled connections
     config.setdefault('ckan.datastore.sqlalchemy.pool_pre_ping', True)
+    config['ckan.datastore.sqlalchemy.url'] = config['sqlalchemy.url']
 
     # Initialize SQLAlchemy
     engine = sqlalchemy.engine_from_config(config, 'ckan.datastore.sqlalchemy.', client_encoding='utf8')
