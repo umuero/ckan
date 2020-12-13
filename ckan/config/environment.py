@@ -10,6 +10,7 @@ import pytz
 
 import sqlalchemy
 from pylons import config as pylons_config
+from paste.deploy.converters import asbool
 import formencode
 
 import ckan.config.routing as routing
@@ -24,7 +25,6 @@ import ckan.logic as logic
 import ckan.authz as authz
 import ckan.lib.jinja_extensions as jinja_extensions
 from ckan.lib.i18n import build_js_translations
-
 from ckan.common import _, ungettext, config
 from ckan.exceptions import CkanConfigurationException
 
@@ -286,7 +286,8 @@ def update_config():
 
     # Enable pessimistic disconnect handling (added in SQLAlchemy 1.2)
     # to eliminate database errors due to stale pooled connections
-    config.setdefault('ckan.datastore.sqlalchemy.pool_pre_ping', True)
+    config['ckan.datastore.sqlalchemy.pool_pre_ping'] = asbool(config.setdefault('ckan.datastore.sqlalchemy.pool_pre_ping', True))
+    config['ckan.datastore.sqlalchemy.echo_pool'] = asbool(config.setdefault('ckan.datastore.sqlalchemy.echo_pool', True))
     config.setdefault('ckan.datastore.sqlalchemy.url', config['sqlalchemy.url'])
 
     # Initialize SQLAlchemy
