@@ -355,7 +355,7 @@ class Group(vdm.sqlalchemy.RevisionedObjectMixin,
             if not grp_rev.revision in results:
                 results[grp_rev.revision] = []
             results[grp_rev.revision].append(grp_rev)
-        for class_ in [Member, GroupExtra]:
+        for class_ in [Member]:
             rev_class = class_.__revision_class__
             obj_revisions = meta.Session.query(rev_class).\
                 filter_by(group_id=self.id).all()
