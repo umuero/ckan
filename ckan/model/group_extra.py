@@ -23,7 +23,7 @@ group_extra_table = Table('group_extra', meta.metadata,
 )
 
 vdm.sqlalchemy.make_table_stateful(group_extra_table)
-group_extra_revision_table = core.make_revisioned_table(group_extra_table, frozen=True)
+group_extra_revision_table = core.make_revisioned_table(group_extra_table)
 
 class GroupExtra(vdm.sqlalchemy.StatefulObjectMixin,
         domain_object.DomainObject):
