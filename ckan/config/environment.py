@@ -287,7 +287,7 @@ def update_config():
     # Enable pessimistic disconnect handling (added in SQLAlchemy 1.2)
     # to eliminate database errors due to stale pooled connections
     config['ckan.datastore.sqlalchemy.pool_pre_ping'] = asbool(config.setdefault('ckan.datastore.sqlalchemy.pool_pre_ping', True))
-    config['ckan.datastore.sqlalchemy.echo_pool'] = asbool(config.setdefault('ckan.datastore.sqlalchemy.echo_pool', True))
+    # config['ckan.datastore.sqlalchemy.echo_pool'] = asbool(config.setdefault('ckan.datastore.sqlalchemy.echo_pool', True))
     config.setdefault('ckan.datastore.sqlalchemy.url', config['sqlalchemy.url'])
 
     # Initialize SQLAlchemy

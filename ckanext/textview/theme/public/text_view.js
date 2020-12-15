@@ -47,7 +47,21 @@ ckan.module('text_view', function (jQuery) {
         p = this.options.parameters.text;
       }
 
+      var error = undefined;
       jQuery.ajax(resource_url, {
+        xhr: function() {
+          var xhr = new window.XMLHttpRequest();
+          // Download progress
+          xhr.addEventListener("progress", function(evt){
+            if (evt.lengthComputable) {
+              if (evt.total > 20000000 || evt.loaded > 20000000) {
+                error = "Data too large for preview";
+                xhr.abort();
+              }
+            }
+          }, false);
+          return xhr;
+        },
         type: 'GET',
         contentType: p.contentType,
         dataType: p.dataType,
@@ -64,12 +78,18 @@ ckan.module('text_view', function (jQuery) {
           self.el[0].innerHTML = highlighted;
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          if (textStatus == 'error' && jqXHR.responseText) {
+          if (textStatus === 'error' && jqXHR.responseText) {
             self.el.html(jqXHR.responseText);
           } else {
-            self.el.html(self._(
-              'An error occured during AJAX request. Could not load view.')
-            );
+            if (error) {
+              self.el.html(self._(
+                error)
+              );
+            } else {
+              self.el.html(self._(
+                'An error occured during AJAX request. Could not load view.')
+              );
+            }
           }
         }
       });
