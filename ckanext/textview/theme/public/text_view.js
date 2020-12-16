@@ -47,7 +47,6 @@ ckan.module('text_view', function (jQuery) {
         p = this.options.parameters.text;
       }
 
-      var error = undefined;
       jQuery.ajax(resource_url, {
         type: 'GET',
         contentType: p.contentType,
@@ -64,16 +63,15 @@ ckan.module('text_view', function (jQuery) {
           } else {
             highlighted = '<pre>' + data + '</pre>';
           }
-
           self.el[0].innerHTML = highlighted;
         },
         error: function(jqXHR, textStatus, errorThrown) {
           if (textStatus === 'parseerror' && jqXHR.responseText) {
             var highlighted;
             if (p.language) {
-              highlighted = hljs.highlight(p.language, data, true).value;
+              highlighted = hljs.highlight(p.language, jqXHR.responseText, true).value;
             } else {
-              highlighted = '<pre>' + data + '</pre>';
+              highlighted = '<pre>' + jqXHR.responseText + '</pre>';
             }
             self.el[0].innerHTML = highlighted;
           } else if (textStatus === 'error' && jqXHR.responseText) {
