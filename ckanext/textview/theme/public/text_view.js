@@ -49,22 +49,12 @@ ckan.module('text_view', function (jQuery) {
 
       var error = undefined;
       jQuery.ajax(resource_url, {
-        xhr: function() {
-          var xhr = new window.XMLHttpRequest();
-          // Download progress
-          xhr.addEventListener("progress", function(evt){
-            if (evt.lengthComputable) {
-              if (evt.total > 20000000 || evt.loaded > 20000000) {
-                error = "Data too large for preview";
-                xhr.abort();
-              }
-            }
-          }, false);
-          return xhr;
-        },
         type: 'GET',
         contentType: p.contentType,
         dataType: p.dataType,
+        headers: {
+          "Range": "bytes=0-5000000"
+        },
         success: function(data, textStatus, jqXHR) {
           data = p.dataConverter ? p.dataConverter(data) : data;
           var highlighted;
@@ -78,18 +68,20 @@ ckan.module('text_view', function (jQuery) {
           self.el[0].innerHTML = highlighted;
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          if (textStatus === 'error' && jqXHR.responseText) {
+          if (textStatus === 'parseerror' && jqXHR.responseText) {
+            var highlighted;
+            if (p.language) {
+              highlighted = hljs.highlight(p.language, data, true).value;
+            } else {
+              highlighted = '<pre>' + data + '</pre>';
+            }
+            self.el[0].innerHTML = highlighted;
+          } else if (textStatus === 'error' && jqXHR.responseText) {
             self.el.html(jqXHR.responseText);
           } else {
-            if (error) {
-              self.el.html(self._(
-                error)
-              );
-            } else {
-              self.el.html(self._(
-                'An error occured during AJAX request. Could not load view.')
-              );
-            }
+            self.el.html(self._(
+              'An error occured during AJAX request. Could not load view.')
+            );
           }
         }
       });
