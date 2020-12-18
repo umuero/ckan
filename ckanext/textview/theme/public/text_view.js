@@ -52,7 +52,7 @@ ckan.module('text_view', function (jQuery) {
         contentType: p.contentType,
         dataType: p.dataType,
         headers: {
-          "Range": "bytes=0-5000000"
+          "Range": "bytes=0-2000000"
         },
         success: function(data, textStatus, jqXHR) {
           data = p.dataConverter ? p.dataConverter(data) : data;
