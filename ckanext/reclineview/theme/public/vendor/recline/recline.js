@@ -2934,7 +2934,7 @@ my.MultiView = Backbone.View.extend({
   // * loader: if true show loading spinner
   notify: function(flash) {
     var tmplData = _.extend({
-      message: 'Loading',
+      message: this.recline.i18n('Loading'),
       category: 'warning',
       loader: false
       },
