@@ -1,7 +1,7 @@
 this.recline = this.recline || {};
 this.recline.Backend = this.recline.Backend || {};
 this.recline.Backend.DataProxy = this.recline.Backend.DataProxy || {};
-this.recline.i18n = (window.parent.ckan && window.parent.ckan.i18n && window.parent.ckan.i18n._) || function(s) {return s};
+var ckan_translate = (window.parent.ckan && window.parent.ckan.i18n && window.parent.ckan.i18n._) || function(s) {return s};
 
 (function(my) {
   "use strict";
@@ -1066,8 +1066,8 @@ my.Flot = Backbone.View.extend({
     <div class="recline-flot"> \
       <div class="panel graph" style="display: block;"> \
         <div class="js-temp-notice alert alert-warning alert-block"> \
-          <p>' + this.recline.i18n('Cannot plot a graph as no fields has been selected.') + '</p> \
-          <p>' + this.recline.i18n('Please, select fields using  <strong>the menu on the right</strong>') + '</p> \
+          <p>' + ckan_translate('Cannot plot a graph as no fields has been selected.') + '</p> \
+          <p>' + ckan_translate('Please, select fields using  <strong>the menu on the right</strong>') + '</p> \
         </div> \
       </div> \
     </div> \
@@ -1406,22 +1406,22 @@ my.FlotControls = Backbone.View.extend({
     <form class="form-stacked"> \
       <div class="clearfix"> \
         <div class="form-group"> \
-          <label>' + this.recline.i18n('Graph Type') + '</label> \
+          <label>' + ckan_translate('Graph Type') + '</label> \
           <div class="input editor-type"> \
             <select class="form-control"> \
-              <option value="lines-and-points">' + this.recline.i18n('Lines and Points') + '</option> \
-              <option value="lines">' + this.recline.i18n('Lines') + '</option> \
-              <option value="points">' + this.recline.i18n('Points') + '</option> \
-              <option value="bars">' + this.recline.i18n('Bars') + '</option> \
-              <option value="columns">' + this.recline.i18n('Columns') + '</option> \
+              <option value="lines-and-points">' + ckan_translate('Lines and Points') + '</option> \
+              <option value="lines">' + ckan_translate('Lines') + '</option> \
+              <option value="points">' + ckan_translate('Points') + '</option> \
+              <option value="bars">' + ckan_translate('Bars') + '</option> \
+              <option value="columns">' + ckan_translate('Columns') + '</option> \
             </select> \
           </div> \
         </div> \
         <div class="form-group"> \
-          <label>' + this.recline.i18n('Group Column (Axis 1)') + '</label> \
+          <label>' + ckan_translate('Group Column (Axis 1)') + '</label> \
           <div class="input editor-group"> \
             <select class="form-control"> \
-              <option value="">' + this.recline.i18n('Please choose ...') + '</option> \
+              <option value="">' + ckan_translate('Please choose ...') + '</option> \
                 {{#fields}} \
               <option value="{{id}}">{{label}}</option> \
                 {{/fields}} \
@@ -1432,10 +1432,10 @@ my.FlotControls = Backbone.View.extend({
         </div> \
       </div> \
       <div class="editor-buttons"> \
-        <button class="btn btn-default editor-add">' + this.recline.i18n('Add Series') + '</button> \
+        <button class="btn btn-default editor-add">' + ckan_translate('Add Series') + '</button> \
       </div> \
       <div class="editor-buttons editor-submit" comment="hidden temporarily" style="display: none;"> \
-        <button class="editor-save">' + this.recline.i18n('Save') + '</button> \
+        <button class="editor-save">' + ckan_translate('Save') + '</button> \
         <input type="hidden" class="editor-id" value="chart-1" /> \
       </div> \
     </form> \
@@ -1444,8 +1444,8 @@ my.FlotControls = Backbone.View.extend({
   templateSeriesEditor: ' \
     <div class="editor-series js-series-{{seriesIndex}}"> \
       <div class="form-group"> \
-        <label>' + this.recline.i18n('Series') + ' <span>{{seriesName}} ' + this.recline.i18n('(Axis 2)') + '</span> \
-          [<a href="#remove" class="action-remove-series">' + this.recline.i18n('Remove') + '</a>] \
+        <label>' + ckan_translate('Series') + ' <span>{{seriesName}} ' + ckan_translate('(Axis 2)') + '</span> \
+          [<a href="#remove" class="action-remove-series">' + ckan_translate('Remove') + '</a>] \
         </label> \
         <div class="input"> \
           <select class="form-control"> \
@@ -1778,8 +1778,8 @@ my.GridRow = Backbone.View.extend({
       <textarea class="data-table-cell-editor-editor" bind="textarea">{{value}}</textarea> \
       <div id="data-table-cell-editor-actions"> \
         <div class="data-table-cell-editor-action"> \
-          <button class="okButton btn primary">' + this.recline.i18n('Update') + '</button> \
-          <button class="cancelButton btn danger">' + this.recline.i18n('Cancel') + '</button> \
+          <button class="okButton btn primary">' + ckan_translate('Update') + '</button> \
+          <button class="cancelButton btn danger">' + ckan_translate('Cancel') + '</button> \
         </div> \
       </div> \
     </div> \
@@ -2120,7 +2120,7 @@ my.Map = Backbone.View.extend({
           self.features.addData(feature);
         } catch (except) {
           wrongSoFar += 1;
-          var msg = this.recline.i18n('Wrong geometry value');
+          var msg = ckan_translate('Wrong geometry value');
           if (except.message) msg += ' (' + except.message + ')';
           if (wrongSoFar <= 10) {
             self.trigger('recline:flash', {message: msg, category:'error'});
@@ -2129,7 +2129,7 @@ my.Map = Backbone.View.extend({
       } else {
         wrongSoFar += 1;
         if (wrongSoFar <= 10) {
-          self.trigger('recline:flash', {message: this.recline.i18n('Wrong geometry value'), category:'error'});
+          self.trigger('recline:flash', {message: ckan_translate('Wrong geometry value'), category:'error'});
         }
       }
       return true;
@@ -2344,13 +2344,13 @@ my.MapMenu = Backbone.View.extend({
         <div class="editor-field-type"> \
             <label class="radio"> \
               <input type="radio" id="editor-field-type-latlon" name="editor-field-type" value="latlon" checked="checked"/> \
-              ' + this.recline.i18n('Latitude / Longitude fields') + '</label> \
+              ' + ckan_translate('Latitude / Longitude fields') + '</label> \
             <label class="radio"> \
               <input type="radio" id="editor-field-type-geom" name="editor-field-type" value="geom" /> \
-              ' + this.recline.i18n('GeoJSON field') + '</label> \
+              ' + ckan_translate('GeoJSON field') + '</label> \
         </div> \
         <div class="editor-field-type-latlon"> \
-          <label>' + this.recline.i18n('Latitude field') + '</label> \
+          <label>' + ckan_translate('Latitude field') + '</label> \
           <div class="input editor-lat-field"> \
             <select class="form-control"> \
             <option value=""></option> \
@@ -2359,7 +2359,7 @@ my.MapMenu = Backbone.View.extend({
             {{/fields}} \
             </select> \
           </div> \
-          <label>' + this.recline.i18n('Longitude field') + '</label> \
+          <label>' + ckan_translate('Longitude field') + '</label> \
           <div class="input editor-lon-field"> \
             <select class="form-control"> \
             <option value=""></option> \
@@ -2370,7 +2370,7 @@ my.MapMenu = Backbone.View.extend({
           </div> \
         </div> \
         <div class="editor-field-type-geom" style="display:none"> \
-          <label>' + this.recline.i18n('Geometry field (GeoJSON)') + '</label> \
+          <label>' + ckan_translate('Geometry field (GeoJSON)') + '</label> \
           <div class="input editor-geom-field"> \
             <select class="form-control"> \
             <option value=""></option> \
@@ -2382,15 +2382,15 @@ my.MapMenu = Backbone.View.extend({
         </div> \
       </div> \
       <div class="editor-buttons"> \
-        <button class="btn btn-default editor-update-map">' + this.recline.i18n('Update') + '</button> \
+        <button class="btn btn-default editor-update-map">' + ckan_translate('Update') + '</button> \
       </div> \
       <div class="editor-options" > \
         <label class="checkbox"> \
           <input type="checkbox" id="editor-auto-zoom" value="autozoom" checked="checked" /> \
-          ' + this.recline.i18n('Auto zoom to features') + '</label> \
+          ' + ckan_translate('Auto zoom to features') + '</label> \
         <label class="checkbox"> \
           <input type="checkbox" id="editor-cluster" value="cluster"/> \
-          ' + this.recline.i18n('Cluster markers') + '</label> \
+          ' + ckan_translate('Cluster markers') + '</label> \
       </div> \
       <input type="hidden" class="editor-id" value="map-1" /> \
     </form> \
@@ -2621,7 +2621,7 @@ my.MultiView = Backbone.View.extend({
         </div> \
       </div> \
       <div class="recline-results-info"> \
-        <span class="doc-count">{{recordCount}}</span> ' + this.recline.i18n('records') + '\
+        <span class="doc-count">{{recordCount}}</span> ' + ckan_translate('records') + '\
       </div> \
       <div class="menu-right"> \
         <div class="btn-group" data-toggle="buttons-checkbox"> \
@@ -2934,7 +2934,7 @@ my.MultiView = Backbone.View.extend({
   // * loader: if true show loading spinner
   notify: function(flash) {
     var tmplData = _.extend({
-      message: this.recline.i18n('Loading'),
+      message: ckan_translate('Loading'),
       category: 'warning',
       loader: false
       },
@@ -3515,7 +3515,7 @@ my.SlickGrid = Backbone.View.extend({
 my.GridControl= Backbone.View.extend({
   className: "recline-row-add",
   // Template for row edit menu , change it if you don't love
-  template: '<h1><button href="#" class="recline-row-add btn btn-default">' + this.recline.i18n('Add row') + '</button></h1>',
+  template: '<h1><button href="#" class="recline-row-add btn btn-default">' + ckan_translate('Add row') + '</button></h1>',
 
   initialize: function(options){
     var self = this;
@@ -4049,10 +4049,10 @@ my.FilterEditor = Backbone.View.extend({
   template: ' \
     <div class="filters"> \
       <h3>Filters</h3> \
-      <a href="#" class="js-add-filter">' + this.recline.i18n('Add filter') + '</a> \
+      <a href="#" class="js-add-filter">' + ckan_translate('Add filter') + '</a> \
       <form class="form-stacked js-add" style="display: none;"> \
         <div class="form-group"> \
-          <label>' + this.recline.i18n('Field') + '</label> \
+          <label>' + ckan_translate('Field') + '</label> \
           <select class="fields form-control"> \
             {{#fields}} \
             <option value="{{id}}">{{label}}</option> \
@@ -4060,21 +4060,21 @@ my.FilterEditor = Backbone.View.extend({
           </select> \
         </div> \
         <div class="form-group"> \
-          <label>' + this.recline.i18n('Filter type') + '</label> \
+          <label>' + ckan_translate('Filter type') + '</label> \
           <select class="filterType form-control"> \
-            <option value="term">' + this.recline.i18n('Value') + '</option> \
-            <option value="range">' + this.recline.i18n('Range') + '</option> \
-            <option value="geo_distance">' + this.recline.i18n('Geo distance') + '</option> \
+            <option value="term">' + ckan_translate('Value') + '</option> \
+            <option value="range">' + ckan_translate('Range') + '</option> \
+            <option value="geo_distance">' + ckan_translate('Geo distance') + '</option> \
           </select> \
         </div> \
-        <button type="submit" class="btn btn-default">' + this.recline.i18n('Add') + '</button> \
+        <button type="submit" class="btn btn-default">' + ckan_translate('Add') + '</button> \
       </form> \
       <form class="form-stacked js-edit"> \
         {{#filters}} \
           {{{filterRender}}} \
         {{/filters}} \
         {{#filters.length}} \
-        <button type="submit" class="btn btn-default">' + this.recline.i18n('Update') + '</button> \
+        <button type="submit" class="btn btn-default">' + ckan_translate('Update') + '</button> \
         {{/filters.length}} \
       </form> \
     </div> \
@@ -4085,7 +4085,7 @@ my.FilterEditor = Backbone.View.extend({
         <fieldset> \
           <legend> \
             {{field}} <small>{{type}}</small> \
-            <a class="js-remove-filter" href="#" title="' + this.recline.i18n('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
+            <a class="js-remove-filter" href="#" title="' + ckan_translate('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
           </legend> \
           <input class="input-sm" type="text" value="{{term}}" name="term" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
         </fieldset> \
@@ -4096,14 +4096,14 @@ my.FilterEditor = Backbone.View.extend({
         <fieldset> \
           <legend> \
             {{field}} <small>{{type}}</small> \
-            <a class="js-remove-filter" href="#" title="' + this.recline.i18n('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
+            <a class="js-remove-filter" href="#" title="' + ckan_translate('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
           </legend> \
           <div class="form-group"> \
-            <label class="control-label" for="">' + this.recline.i18n('From') + '</label> \
+            <label class="control-label" for="">' + ckan_translate('From') + '</label> \
             <input class="input-sm" type="text" value="{{from}}" name="from" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
           </div> \
           <div class="form-group"> \
-            <label class="control-label" for="">' + this.recline.i18n('To') + '</label> \
+            <label class="control-label" for="">' + ckan_translate('To') + '</label> \
             <input class="input-sm" type="text" value="{{to}}" name="to" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
           </div> \
         </fieldset> \
@@ -4114,18 +4114,18 @@ my.FilterEditor = Backbone.View.extend({
         <fieldset> \
           <legend> \
             {{field}} <small>{{type}}</small> \
-            <a class="js-remove-filter" href="#" title="' + this.recline.i18n('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
+            <a class="js-remove-filter" href="#" title="' + ckan_translate('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
           </legend> \
           <div class="form-group"> \
-            <label class="control-label" for="">' + this.recline.i18n('Longitude') + '</label> \
+            <label class="control-label" for="">' + ckan_translate('Longitude') + '</label> \
             <input class="input-sm" type="text" value="{{point.lon}}" name="lon" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
           </div> \
           <div class="form-group"> \
-            <label class="control-label" for="">' + this.recline.i18n('Latitude') + '</label> \
+            <label class="control-label" for="">' + ckan_translate('Latitude') + '</label> \
             <input class="input-sm" type="text" value="{{point.lat}}" name="lat" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
           </div> \
           <div class="form-group"> \
-            <label class="control-label" for="">' + this.recline.i18n('Distance (km)') + '</label> \
+            <label class="control-label" for="">' + ckan_translate('Distance (km)') + '</label> \
             <input class="input-sm" type="text" value="{{distance}}" name="distance" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
           </div> \
         </fieldset> \
@@ -4309,7 +4309,7 @@ my.QueryEditor = Backbone.View.extend({
             <i class="glyphicon glyphicon-search"></i> \
           </div> \
           <label for="q">Search</label> \
-          <input class="form-control search-query" type="text" id="q" name="q" value="{{q}}" placeholder="' + this.recline.i18n('Search data') + ' ..."> \
+          <input class="form-control search-query" type="text" id="q" name="q" value="{{q}}" placeholder="' + ckan_translate('Search data') + ' ..."> \
         </div> \
       </div> \
       <button type="submit" class="btn btn-default">Go &raquo;</button> \
@@ -4352,7 +4352,7 @@ my.ValueFilter = Backbone.View.extend({
   template: ' \
     <div class="filters"> \
       <h3>Filters</h3> \
-      <button class="btn js-add-filter add-filter">' + this.recline.i18n('Add filter') + '</button> \
+      <button class="btn js-add-filter add-filter">' + ckan_translate('Add filter') + '</button> \
       <form class="form-stacked js-add" style="display: none;"> \
         <fieldset> \
           <label>Field</label> \
@@ -4361,7 +4361,7 @@ my.ValueFilter = Backbone.View.extend({
             <option value="{{id}}">{{label}}</option> \
             {{/fields}} \
           </select> \
-          <button type="submit" class="btn">' + this.recline.i18n('Add') + '</button> \
+          <button type="submit" class="btn">' + ckan_translate('Add') + '</button> \
         </fieldset> \
       </form> \
       <form class="form-stacked js-edit"> \
@@ -4369,7 +4369,7 @@ my.ValueFilter = Backbone.View.extend({
           {{{filterRender}}} \
         {{/filters}} \
         {{#filters.length}} \
-        <button type="submit" class="btn update-filter">' + this.recline.i18n('Update') + '</button> \
+        <button type="submit" class="btn update-filter">' + ckan_translate('Update') + '</button> \
         {{/filters.length}} \
       </form> \
     </div> \
@@ -4379,7 +4379,7 @@ my.ValueFilter = Backbone.View.extend({
       <div class="filter-{{type}} filter"> \
         <fieldset> \
           {{field}} \
-          <a class="js-remove-filter" href="#" title="' + this.recline.i18n('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
+          <a class="js-remove-filter" href="#" title="' + ckan_translate('Remove this filter') + '" data-filter-id="{{id}}">&times;</a> \
           <input type="text" value="{{term}}" name="term" data-filter-field="{{field}}" data-filter-id="{{id}}" data-filter-type="{{type}}" /> \
         </fieldset> \
       </div> \
