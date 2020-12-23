@@ -4,6 +4,7 @@ from six import text_type
 import vdm.sqlalchemy
 import vdm.sqlalchemy.stateful
 from sqlalchemy import orm, types, Column, Table, ForeignKey
+from sqlalchemy.ext.associationproxy import association_proxy
 
 import meta
 import core
@@ -78,8 +79,5 @@ PackageExtraRevision.related_packages = lambda self: [self.continuity.package]
 def _create_extra(key, value):
     return PackageExtra(key=text_type(key), value=value)
 
-_extras_active = vdm.sqlalchemy.stateful.DeferredProperty('_extras',
-        vdm.sqlalchemy.stateful.StatefulDict, base_modifier=lambda x: x.get_as_of())
-setattr(_package.Package, 'extras_active', _extras_active)
-_package.Package.extras = vdm.sqlalchemy.stateful.OurAssociationProxy('extras_active', 'value',
-            creator=_create_extra)
+_package.Package.extras = association_proxy('_extras', 'value', creator=_create_extra)
+
