@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckan 2.8.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-23 20:13+0300\n"
+"POT-Creation-Date: 2020-12-24 03:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -739,6 +739,14 @@ msgstr ""
 #: ckan/templates/home/snippets/search.html:6
 #: ckanext/reclineview/theme/public/vendor/recline/recline.js:4312
 msgid "Search data"
+msgstr ""
+
+#: ckan/templates/snippets/language_selector.html:11
+#: ckan/templates/snippets/search_form.html:41
+#: ckan/templates/snippets/simple_search.html:15
+#: ckan/templates/snippets/sort_by.html:22
+#: ckanext/reclineview/theme/public/vendor/recline/recline.js:4315
+msgid "Go"
 msgstr ""
 
 #: ckanext/reclineview/theme/templates/recline_graph_form.html:3
@@ -4461,13 +4469,6 @@ msgstr ""
 
 #: ckan/templates/snippets/language_selector.html:3
 msgid "Language"
-msgstr ""
-
-#: ckan/templates/snippets/language_selector.html:11
-#: ckan/templates/snippets/search_form.html:41
-#: ckan/templates/snippets/simple_search.html:15
-#: ckan/templates/snippets/sort_by.html:22
-msgid "Go"
 msgstr ""
 
 #: ckan/templates/snippets/license.html:14

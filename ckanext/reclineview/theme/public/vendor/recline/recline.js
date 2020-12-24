@@ -4312,7 +4312,7 @@ my.QueryEditor = Backbone.View.extend({
           <input class="form-control search-query" type="text" id="q" name="q" value="{{q}}" placeholder="' + ckan_translate._('Search data') + ' ..."> \
         </div> \
       </div> \
-      <button type="submit" class="btn btn-default">Go &raquo;</button> \
+      <button type="submit" class="btn btn-default">' + ckan_translate._('Go') + ' &raquo;</button> \
     </form> \
   ',
 
