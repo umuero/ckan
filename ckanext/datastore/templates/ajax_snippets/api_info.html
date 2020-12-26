@@ -11,8 +11,6 @@ Example
 #}
 
 {% set resource_id = h.sanitize_id(resource_id) %}
-{% set sql_example_url = h.url_for(controller='api', action='action', ver=3, logic_function='datastore_search_sql', qualified=True) + '?sql=SELECT * from "' + resource_id + '" WHERE title LIKE \'jones\'' %}
-{# not urlencoding the sql because its clearer #}
 <div{% if not embedded %} class="modal fade"{% endif %}>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -52,11 +50,6 @@ Example
                       <th scope="row">{{ _('Query') }}</th>
                       <td><code>{{ h.url_for(controller='api', action='action', ver=3, logic_function='datastore_search', qualified=True) }}</code></td>
                     </tr>
-                    <tr>
-                      <th scope="row">{{ _('Query (via SQL)') }}</th>
-                      <td><code>{{ h.url_for(controller='api', action='action', ver=3, logic_function='datastore_search_sql', qualified=True) }}</code></td>
-                    </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -77,11 +70,6 @@ Example
                 <strong>{{ _('Query example (results containing \'jones\')') }}</strong>
                 <p>
                 <code>{{ h.url_for(controller='api', action='action', ver=3, logic_function='datastore_search', resource_id=resource_id, q='jones', qualified=True) }}</code>
-                </p>
-
-                <strong>{{ _('Query example (via SQL statement)') }}</strong>
-                <p>
-                <code>{{sql_example_url}}</code>
                 </p>
 
               </div>
