@@ -1,14 +1,14 @@
 # Translations template for ckan.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckan 2.8.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-24 03:30+0300\n"
+"POT-Creation-Date: 2021-01-04 17:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,16 +147,16 @@ msgid "User {0} not authorized to update resource {1}"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:19
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:21
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:23
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:25
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
 msgstr ""
 
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:26
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:24
 msgid ""
 " Further information in the <a             "
 "href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
@@ -164,67 +164,57 @@ msgid ""
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:33
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:35
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:33
 msgid "Endpoints"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:37
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:39
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:37
 msgid "The Data API can be accessed via the following actions of the CKAN action API."
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:42
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:44
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:42
 msgid "Create"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:46
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:48
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:46
 msgid "Update / Insert"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:50
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:52
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:50
 msgid "Query"
 msgstr ""
 
-#: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:54
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:56
-msgid "Query (via SQL)"
-msgstr ""
-
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:66
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:68
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:61
 msgid "Querying"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:70
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:72
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:65
 msgid "Query example (first 5 results)"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:75
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:77
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:70
 msgid "Query example (results containing 'jones')"
 msgstr ""
 
-#: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:80
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:82
-msgid "Query example (via SQL statement)"
-msgstr ""
-
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:91
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:93
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:81
 msgid "Example: Javascript"
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:95
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:97
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:85
 msgid "A simple ajax (JSONP) request to the data API using jQuery."
 msgstr ""
 
 #: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:116
-#: ckanext/datastore/templates/ajax_snippets/api_info.html:118
+#: ckanext/datastore/templates/ajax_snippets/api_info.html:106
 msgid "Example: Python"
 msgstr ""
 
@@ -318,6 +308,14 @@ msgid ""
 " Further information in the <a       "
 "href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
 "target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
+msgstr ""
+
+#: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:54
+msgid "Query (via SQL)"
+msgstr ""
+
+#: ckanext/datastore/templates-bs2/ajax_snippets/api_info.html:80
+msgid "Query example (via SQL statement)"
 msgstr ""
 
 #: ckanext/datatablesview/plugin.py:47 ckanext/reclineview/plugin.py:137
@@ -530,6 +528,17 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
+#: ckanext/reclineview/theme/public/vendor/recline/recline.js:2624
+#: ckanext/reclineview/theme/public/widget.recordcount.js:13
+#: ckanext/reclineview/theme/public/widget.recordcount.min.js:1
+msgid "records"
+msgstr ""
+
+#: ckanext/reclineview/theme/public/widget.recordcount.js:24
+#: ckanext/reclineview/theme/public/widget.recordcount.min.js:1
+msgid "Unknown number of"
+msgstr ""
+
 #: ckanext/reclineview/theme/public/vendor/recline/recline.js:1069
 msgid "Cannot plot a graph as no fields has been selected."
 msgstr ""
@@ -655,10 +664,6 @@ msgstr ""
 #: ckanext/reclineview/theme/public/vendor/recline/recline.js:2393
 #: ckanext/reclineview/theme/templates/recline_map_form.html:11
 msgid "Cluster markers"
-msgstr ""
-
-#: ckanext/reclineview/theme/public/vendor/recline/recline.js:2624
-msgid "records"
 msgstr ""
 
 #: ckanext/reclineview/theme/public/vendor/recline/recline.js:2937
